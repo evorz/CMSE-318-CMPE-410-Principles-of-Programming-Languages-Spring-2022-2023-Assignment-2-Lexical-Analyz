@@ -17,6 +17,7 @@ following menu being displayed:
 
 "Call lex()" should call the lexical analyzer to get the next token, as well as additional
 information. In case of
+
  An identifier, a pointer to the symbol table (index into the symbol table) should be
 returned as the extra information. Identifiers should be placed by lex() in the symbol
 table the first time they are encountered.
@@ -26,6 +27,7 @@ information
 The “show symbol table” option should print the contents of the symbol table on the screen.
 2
 Spaces should be skipped in the input file.
+ 
  The TOKENS that should be returned by the lexical analyzer are:
  INTEGER
  FLOAT
@@ -38,6 +40,7 @@ Spaces should be skipped in the input file.
  WHILE
  IF
  ELSE
+
 Define TOKENS as enumerations.
 Initialize your symbol table with the reserved words “for”, “while”, “if”, “else”, so that
 identifiers are placed in positions 4 and higher.
@@ -46,6 +49,7 @@ as well as at least three unrecognized strings):
 x 45 5.4 -33 size 34RR y1234 && for x while
 The lexical analyzer ( lex() ) should return the following objects (only relevant attributes shown)
 one at a time, as it is called for the sample file:
+
 <token=ID, index=4>
 <token=INTEGER, integer_value = 45>
 <token=FLOAT, float_value = 5.4>
@@ -57,10 +61,12 @@ one at a time, as it is called for the sample file:
 <token=FOR>
 <token=ID, index=4>
 <token=WHILE>
+
 Each time lex() is called, the information in the object that it returns should be printed on the
 screen.
 You can assume that all lexemes are separated by white space, such as the space character, the
 tab character or a new line character.
 3
+
 Hint: define a class for the return type of lex() that can hold different kinds of information, such
 as LEX_RESULT. 

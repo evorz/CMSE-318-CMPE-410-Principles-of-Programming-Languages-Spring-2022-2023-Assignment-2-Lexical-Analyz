@@ -14,6 +14,7 @@ following menu being displayed:
 - Show symbol table
 - Exit
 "Exit" should end the program.
+
 "Call lex()" should call the lexical analyzer to get the next token, as well as additional
 information. In case of
  An identifier, a pointer to the symbol table (index into the symbol table) should be

@@ -51,15 +51,25 @@ The lexical analyzer ( lex() ) should return the following objects (only relevan
 one at a time, as it is called for the sample file:
 
 <token=ID, index=4>
+
 <token=INTEGER, integer_value = 45>
+
 <token=FLOAT, float_value = 5.4>
+
 <token=INTEGER, integer_value = -33>
+
 <token=ID, index=5>
+
 <token=ERROR, unrecognizded_string = “34RR”>
+
 <token=ID, index=6>
+
 <token=LOGICAL_AND>
+
 <token=FOR>
+
 <token=ID, index=4>
+
 <token=WHILE>
 
 Each time lex() is called, the information in the object that it returns should be printed on the

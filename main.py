@@ -38,8 +38,7 @@ class LexResult:
         return result
 
 # Initialize symbol table with reserved words
-symbol_table = {"for": Token.FOR, "while": Token.WHILE, "if": Token.IF, "else": Token.ELSE, "integer": Token.INTEGER, "float": Token.FLOAT
-                , "id": Token.ID, "|": Token.BITWISE_OR, "||": Token.LOGICAL_OR, "&": Token.BITWISE_AND, "&&": Token.LOGICAL_AND}
+symbol_table = {"for": Token.FOR, "while": Token.WHILE, "if": Token.IF, "else": Token.ELSE}
 # Define lex() function to read input from file and return LexResult object
 def lex(file_name):
     with open(file_name) as file:
@@ -107,9 +106,25 @@ while True:
     if choice == 1:
         for result in lex(file_name):
             print(result)
+    
     elif choice == 2:
-        print(symbol_table)
+        print("""
+    INTEGER = 1
+    FLOAT = 2
+    ID = 3
+    BITWISE_OR (for |) = 4
+    LOGICAL_OR (for ||) = 5
+    BITWISE_AND (for &) = 6
+    LOGICAL_AND (for &&) = 7
+    FOR = 8
+    WHILE = 9
+    IF = 10
+    ELSE = 11
+    ERROR = 12\n""")
+    
     elif choice == 3:
+        print("Exiting...")
         break
+    
     else:
         print("Invalid choice.")

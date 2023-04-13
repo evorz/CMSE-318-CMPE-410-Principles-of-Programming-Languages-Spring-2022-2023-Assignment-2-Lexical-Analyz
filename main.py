@@ -38,8 +38,8 @@ class LexResult:
         return result
 
 # Initialize symbol table with reserved words
-symbol_table = {"for": Token.FOR, "while": Token.WHILE, "if": Token.IF, "else": Token.ELSE}
-
+symbol_table = {"for": Token.FOR, "while": Token.WHILE, "if": Token.IF, "else": Token.ELSE, "integer": Token.INTEGER, "float": Token.FLOAT
+                , "id": Token.ID, "|": Token.BITWISE_OR, "||": Token.LOGICAL_OR, "&": Token.BITWISE_AND, "&&": Token.LOGICAL_AND}
 # Define lex() function to read input from file and return LexResult object
 def lex(file_name):
     with open(file_name) as file:

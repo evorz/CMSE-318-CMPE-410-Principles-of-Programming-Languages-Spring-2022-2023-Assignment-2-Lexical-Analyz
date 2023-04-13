@@ -45,7 +45,13 @@ def lex(file_name):
     with open(file_name) as file:
         for line in file:
             for word in line.split():
-                if word.isdigit(): # integer
+                if word.startswith("-") and word[1:].isdigit(): # negative integer
+                    yield LexResult(Token.INTEGER, int_value=int(word))
+                elif word.startswith("0x") and all(c in "0123456789abcdefABCDEF" for c in word[2:]): # hexadecimal integer
+                    yield LexResult(Token.INTEGER, int_value=int(word, 16))
+                elif word.startswith("0o") and all(c in "01234567" for c in word[2:]): # octal integer
+                    yield LexResult(Token.INTEGER, int_value=int(word, 8))
+                elif word.isdigit(): # positive integer
                     yield LexResult(Token.INTEGER, int_value=int(word))
                 elif is_float(word): # floating point number
                     yield LexResult(Token.FLOAT, float_value=float(word))
@@ -64,8 +70,17 @@ def lex(file_name):
                     yield LexResult(Token.BITWISE_AND)
                 elif word == "&&": # logical and
                     yield LexResult(Token.LOGICAL_AND)
+                elif word == "FOR": # for loop
+                    yield LexResult(Token.FOR)
+                elif word == "WHILE": # while loop
+                    yield LexResult(Token.WHILE)
                 else: # unrecognized lexeme
                     yield LexResult(Token.ERROR, string=word)
+
+def is_identifier(string):
+    # modify this function to match the rules for identifiers in the language being lexed
+    return string.isidentifier() or "-" in string
+
 
 # Define helper function to check if a string is a floating point number
 def is_float(string):
